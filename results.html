@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechTrack Advisor | Results</title>
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="container">
-            <span class="nav-brand">DevJourney Advisor</span>
-            <a href="index.html">Restart</a>
-        </div>
+    <header>
+        <span>DevJourney Advisor</span>
+        <a href="index.html">Restart</a>
     </header>
 
-    <main class="container">
-        <section class="results-section">
-            <h2 id="welcomeText" style="text-align: center; margin-bottom: 1rem;">Your Specialisation Profile</h2>
-            <p id="resultSummary" style="text-align: center;">Based on your responses, here is your compatibility score across the four BSE specialisations.</p>
+    <main>
+        <section>
+            <h2 id="welcomeText">Your Specialisation Profile</h2>
+            <p id="resultSummary">Based on your responses, here is your compatibility score across the four BSE specialisations.</p>
             
-            <div class="chart-container">
+            <div>
                 <canvas id="radarChart" width="400" height="400"></canvas>
             </div>
             
-            <div id="recommendation" style="margin-top: 2rem; padding: 1.5rem; background: rgba(59, 130, 246, 0.1); border-radius: 8px; border-left: 4px solid var(--primary-color);">
+            <div id="recommendation">
                 <h3>Top Recommendation: <span id="topSpec">...</span></h3>
                 <p id="topSpecDesc">Loading your personalized insight...</p>
             </div>
 
-            <div style="margin-top: 2rem; text-align: center;">
-                <a href="contact.html" class="btn-primary" style="display: inline-block; text-decoration: none; width: auto;">Have Questions? Contact Us</a>
+            <div>
+                <br>
+                <a href="contact.html"><button>Have Questions? Contact Us</button></a>
             </div>
         </section>
     </main>
