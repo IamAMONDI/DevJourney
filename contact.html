@@ -4,40 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechTrack Advisor | Contact Us</title>
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="container">
-            <span class="nav-brand">DevJourney Advisor</span>
-            <a href="index.html">Home</a>
-        </div>
+    <header>
+        <span>DevJourney Advisor</span>
+        <a href="index.html">Home</a>
     </header>
 
-    <main class="container">
-        <section class="contact-section">
+    <main>
+        <section>
             <h2>Contact an Advisor</h2>
             <p>Still not sure which path to choose? Send us a message and an academic advisor will get back to you.</p>
             
             <form id="contact-form">
-                <div class="form-group">
+                <div>
                     <label for="contactName">Full Name</label>
                     <input type="text" id="contactName" required>
                 </div>
                 
-                <div class="form-group">
+                <div>
                     <label for="contactEmail">Email Address</label>
                     <input type="email" id="contactEmail" required>
                 </div>
 
-                <div class="form-group">
+                <div>
                     <label for="message">Your Message</label>
                     <textarea id="message" rows="5" required></textarea>
                 </div>
 
-                <button type="submit" class="btn-primary">Send Message</button>
+                <button type="submit">Send Message</button>
             </form>
-            <div id="successMessage" style="display: none; margin-top: 1rem; color: var(--success-color); text-align: center; font-weight: bold;">
+            <div id="successMessage" style="display: none;">
                 Message sent successfully! We will contact you soon.
             </div>
         </section>
