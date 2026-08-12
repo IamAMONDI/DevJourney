@@ -92,6 +92,67 @@ body {
     margin-bottom: 2rem;
 }
 
+/* New Cards for Articles */
+.article-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.article-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.article-card h4 {
+    color: var(--accent-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.article-card ul, .article-card ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.article-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Tables */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th, .data-table td {
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    text-align: left;
+    color: var(--text-secondary);
+}
+
+.data-table th {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* Forms */
 .form-group {
     margin-bottom: 1.5rem;
@@ -150,6 +211,9 @@ body {
     cursor: pointer;
     transition: transform 0.2s, opacity 0.2s;
     width: 100%;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
 }
 
 .btn-primary:hover:not(:disabled) {

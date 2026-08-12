@@ -4,40 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechTrack Advisor | Quiz</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <span>DevJourney Advisor</span>
-        <div id="timer">03:00</div>
+    <header class="navbar">
+        <div class="container">
+            <span class="nav-brand">DevJourney Advisor</span>
+            <div class="timer" id="timer">03:00</div>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <div>
-                <div id="progressBar" style="height: 10px; background: gray; width: 0%;"></div>
+    <main class="container">
+        <section class="quiz-section">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
             </div>
             
             <div id="questionContainer">
                 <h2 id="questionText">Question goes here</h2>
                 
                 <!-- Media containers for multimedia questions -->
-                <div id="audioContainer" style="display: none;">
+                <div id="audioContainer" style="display: none; margin: 1rem 0;">
                     <audio id="questionAudio" controls></audio>
                 </div>
                 
-                <div id="imageContainer" style="display: none;">
-                    <img id="questionImage" src="" alt="Question Image">
+                <div id="imageContainer" style="display: none; margin: 1rem 0; position: relative;">
+                    <img id="questionImage" src="" alt="Question Image" style="max-width: 100%; border-radius: 8px;">
                 </div>
 
-                <div id="optionsGrid">
+                <div class="options-grid" id="optionsGrid">
                     <!-- Options will be dynamically populated here -->
                 </div>
             </div>
             
-            <div>
-                <br>
-                <button id="prevBtn" disabled>Previous</button>
-                <button id="nextBtn" disabled>Next</button>
+            <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                <button class="btn-primary" id="prevBtn" style="width: auto; background: var(--text-secondary);" disabled>Previous</button>
+                <button class="btn-primary" id="nextBtn" style="width: auto;" disabled>Next</button>
             </div>
         </section>
     </main>

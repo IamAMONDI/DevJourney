@@ -4,81 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechTrack Advisor | Home</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to DevJourney Advisor</h1>
-        <nav>
-            <a href="register.html">Start Your Journey</a> |
-            <a href="contact.html">Contact Us</a>
-        </nav>
+    <header class="navbar">
+        <div class="container">
+            <span class="nav-brand">DevJourney Advisor</span>
+            <div class="nav-links">
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>Discover Your Tech Destiny</h2>
-            <p>Take our interactive assessment to find your perfect BSE specialisation.</p>
-            <br>
-            <a href="register.html"><button>Ready? Take the Quiz</button></a>
+    <main class="container">
+        <section class="hero" style="background: transparent; border: none; padding: 6rem 0; text-align: center;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">Discover Your Tech Destiny</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem; color: var(--text-secondary); max-width: 700px; margin-left: auto; margin-right: auto;">Take our interactive assessment to find your perfect BSE specialisation: Low-Level, AR/VR, Full-Stack, or Machine Learning.</p>
+            <a href="register.html" class="btn-primary" style="display: inline-block; width: auto; font-size: 1.25rem; padding: 1rem 2.5rem; text-decoration: none;">Start Your Journey</a>
         </section>
         
-        <hr>
+        <div style="border-top: 1px solid var(--glass-border); margin-bottom: 4rem;"></div>
 
         <section>
-            <h2>Explore the Pathways: 2026 Strategic Briefing</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--text-primary); text-align: center;">Explore the Pathways: 2026 Strategic Briefing</h2>
             
-            <h3>High-Level Pathway Comparative Analysis</h3>
-            <table border="1" cellpadding="8" style="border-collapse: collapse; text-align: left;">
-                <thead>
-                    <tr>
-                        <th>Dimension</th>
-                        <th>Low-Level / Systems</th>
-                        <th>AR/VR (XR)</th>
-                        <th>Full-Stack</th>
-                        <th>Machine Learning (AI)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Primary Focus</strong></td>
-                        <td>Hardware interaction & performance</td>
-                        <td>Immersive experience & spatial UI</td>
-                        <td>Application architecture & UX</td>
-                        <td>Model behavior & intelligence</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Logic Type</strong></td>
-                        <td>Deterministic</td>
-                        <td>Deterministic (Spatial)</td>
-                        <td>Deterministic</td>
-                        <td>Probabilistic</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Core Tooling</strong></td>
-                        <td>C/C++, Rust, Assembly</td>
-                        <td>Unity, Unreal, C#, C++</td>
-                        <td>Web frameworks, APIs, Cloud</td>
-                        <td>ML frameworks, Data pipelines</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Success Metrics</strong></td>
-                        <td>Correctness, Throughput, Latency</td>
-                        <td>Presence, Interaction feel</td>
-                        <td>Uptime, Scalability, Responsiveness</td>
-                        <td>Accuracy, Precision, Recall</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Primary Challenge</strong></td>
-                        <td>Technical debt, Slow builds</td>
-                        <td>Motion sickness, Tracking jitter</td>
-                        <td>System integration complexity</td>
-                        <td>Data drift, Reproducibility</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
+            <div class="article-card">
+                <h3>High-Level Pathway Comparative Analysis</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Low-Level / Systems</th>
+                            <th>AR/VR (XR)</th>
+                            <th>Full-Stack</th>
+                            <th>Machine Learning (AI)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Primary Focus</strong></td>
+                            <td>Hardware interaction & performance</td>
+                            <td>Immersive experience & spatial UI</td>
+                            <td>Application architecture & UX</td>
+                            <td>Model behavior & intelligence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Logic Type</strong></td>
+                            <td>Deterministic</td>
+                            <td>Deterministic (Spatial)</td>
+                            <td>Deterministic</td>
+                            <td>Probabilistic</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Core Tooling</strong></td>
+                            <td>C/C++, Rust, Assembly</td>
+                            <td>Unity, Unreal, C#, C++</td>
+                            <td>Web frameworks, APIs, Cloud</td>
+                            <td>ML frameworks, Data pipelines</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Success Metrics</strong></td>
+                            <td>Correctness, Throughput, Latency</td>
+                            <td>Presence, Interaction feel</td>
+                            <td>Uptime, Scalability, Responsiveness</td>
+                            <td>Accuracy, Precision, Recall</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary Challenge</strong></td>
+                            <td>Technical debt, Slow builds</td>
+                            <td>Motion sickness, Tracking jitter</td>
+                            <td>System integration complexity</td>
+                            <td>Data drift, Reproducibility</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
-            <article>
+            <div class="article-card">
                 <h3>Low-Level / Systems Engineering: The Foundation of Performance</h3>
                 <p>Systems programming remains the strategic bedrock of the industry. It focuses on the design of deterministic systems where abstractions are thin and skills possess high longevity because they are rooted in the constant physics of hardware.</p>
                 <h4>Characteristic Skills:</h4>
@@ -98,9 +100,9 @@
                     <li><strong>Raspberry Pi:</strong> A versatile gateway for studying device trees and kernel-space interaction.</li>
                     <li><strong>STM32F4 Discovery Boards:</strong> Preferred for bare-metal programming via JTAG, offering a simpler, well-documented path to mastering Broadcom-level complexity without a full OS.</li>
                 </ul>
-            </article>
+            </div>
 
-            <article>
+            <div class="article-card">
                 <h3>AR/VR (XR) Development: Building Immersive Realities</h3>
                 <p>XR developers specialize in spatial computing, building applications that bridge the gap between digital content and physical perception across healthcare, manufacturing, and social platforms.</p>
                 <h4>Daily Responsibilities:</h4>
@@ -126,9 +128,9 @@
                     <li><strong>Realistic:</strong> These individuals thrive here because XR requires hands-on, practical technical work involving physical interaction metaphors.</li>
                     <li><strong>Conventional:</strong> Necessary for the highly structured, detail-oriented task of organizing complex 3D asset pipelines.</li>
                 </ul>
-            </article>
+            </div>
 
-            <article>
+            <div class="article-card">
                 <h3>Full-Stack Development: The Architecture of Integration</h3>
                 <p>In 2026, Full-Stack engineering has evolved into the "Architecture of Integration," where the primary goal is connecting disparate services into a cohesive, deterministic software system.</p>
                 <h4>Deterministic Integration:</h4>
@@ -141,9 +143,9 @@
                 </ul>
                 <h4>AI-Augmented Development:</h4>
                 <p>Workflows have shifted from manual execution to high-level direction. 92% of developers now use AI for routine refactoring, code generation, and automated code reviews. The role now demands an architect who can validate AI-generated outputs against system requirements.</p>
-            </article>
+            </div>
 
-            <article>
+            <div class="article-card">
                 <h3>Machine Learning (AI) Engineering: Mastering Probabilistic Systems</h3>
                 <p>AI Engineering is the mastery of systems that derive behavior from data patterns rather than predefined rules. This introduces a probabilistic mental model that contrasts sharply with traditional engineering.</p>
                 <h4>The Four Core Phases of AI Work:</h4>
@@ -156,7 +158,7 @@
                 <h4>High Cognitive Load & Obsolescence:</h4>
                 <p>Mandatory continuous learning is a strategic imperative in this role. State-of-the-art architectures often become obsolete within a single year, creating a high-pressure environment where engineers must constantly pivot based on new research.</p>
                 <h4>Technical Distinction Table:</h4>
-                <table border="1" cellpadding="8" style="border-collapse: collapse; text-align: left;">
+                <table class="data-table">
                     <thead>
                         <tr>
                             <th>Term</th>
@@ -186,15 +188,15 @@
                         </tr>
                     </tbody>
                 </table>
-            </article>
+            </div>
         </section>
 
-        <hr>
+        <div style="border-top: 1px solid var(--glass-border); margin: 4rem 0;"></div>
 
         <section>
-            <h2>Industry & Market Outlook</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--text-primary); text-align: center;">Industry & Market Outlook</h2>
             
-            <article>
+            <div class="article-card">
                 <h3>The Convergence: The Rise of the Hybrid Engineer</h3>
                 <p>The traditional silos between Full-Stack and AI Engineering are dissolving as intelligent automation becomes a standard layer of the software stack.</p>
                 <ul>
@@ -203,13 +205,13 @@
                     <li><strong>AI-Native Startups:</strong> Market demand favors engineers who can handle the entire pipeline—from the model to the orchestration layer.</li>
                 </ul>
                 <p><strong>The 2026 Hybrid Skill Set:</strong> Success now hinges on Contextual Judgment. This is the ability to determine when to trust a probabilistic model and when to override it with deterministic logic. The role has moved from "writing every line" to "directing AI and ensuring systemic quality."</p>
-            </article>
+            </div>
 
-            <article>
+            <div class="article-card">
                 <h3>Market Intelligence: Salaries and Growth Prospects</h3>
                 <p>The massive migration of enterprises to the cloud has created a significant "Cloud Premium" for engineers who can bridge the gap between application logic and infrastructure.</p>
                 <h4>AR/VR (XR) Career Ladder & Salary Tiers:</h4>
-                <table border="1" cellpadding="8" style="border-collapse: collapse; text-align: left;">
+                <table class="data-table">
                     <thead>
                         <tr>
                             <th>Level</th>
@@ -232,9 +234,9 @@
                     <li><strong>Growth:</strong> Immersive technologies are expanding at an annual rate of 30-35%.</li>
                     <li><strong>Flexibility:</strong> 65-75% of job listings in these specialized paths now support remote work.</li>
                 </ul>
-            </article>
+            </div>
 
-            <article>
+            <div class="article-card">
                 <h3>Impact of AI on the Engineering Experience</h3>
                 <p>AI is not a replacement for engineers but a tool that elevates the importance of human judgment and architectural oversight.</p>
                 <h4>Human vs. Automation Summary:</h4>
@@ -243,7 +245,7 @@
                     <li><strong>Humans Retain:</strong> Architectural tradeoffs, creative problem-solving, understanding user needs, and cross-team collaboration.</li>
                 </ul>
                 <p><strong>Software Engineering Intelligence:</strong> This emerging field applies machine learning to engineering telemetry (e.g., DORA metrics and project metadata). By analyzing this data, architects can identify "experience gaps," process bottlenecks, and high cognitive load areas, allowing for data-driven optimizations of the development lifecycle.</p>
-            </article>
+            </div>
         </section>
 
     </main>
