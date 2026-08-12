@@ -7,78 +7,36 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="hero">
+    <header class="navbar">
         <div class="container">
-            <h1>Welcome to DevJourney Advisor</h1>
-            <p>Discover your ideal BSE specialisation: Low-Level, AR/VR, Full-Stack, or Machine Learning.</p>
+            <span class="nav-brand">DevJourney Advisor</span>
+            <div class="nav-links">
+                <a href="contact.html">Contact Us</a>
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <section class="onboarding-section">
-            <h2>Let's Get Started</h2>
-            <p>Please provide your student details to begin the journey.</p>
-            
-            <form id="student-form" class="student-form" action="quiz.html" method="GET">
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe">
-                    <span class="error-message" id="fullNameError"></span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="studentId">Student ID</label>
-                    <input type="text" id="studentId" name="studentId" required placeholder="e.g., 12345678">
-                    <span class="error-message" id="studentIdError"></span>
-                </div>
+        <section class="hero" style="background: transparent; border: none; padding: 6rem 0; text-align: center;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">Discover Your Tech Destiny</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 3rem; color: var(--text-secondary); max-width: 700px; margin-left: auto; margin-right: auto;">Take our interactive assessment to find your perfect BSE specialisation: Low-Level, AR/VR, Full-Stack, or Machine Learning.</p>
+            <a href="register.html" class="btn-primary" style="display: inline-block; width: auto; font-size: 1.25rem; padding: 1rem 2.5rem; text-decoration: none;">Start Your Journey</a>
+        </section>
 
-                <div class="form-group">
-                    <label for="email">ALU Institutional Email</label>
-                    <input type="email" id="email" name="email" required placeholder="j.doe@alustudent.com">
-                    <span class="error-message" id="emailError"></span>
-                </div>
-
-                <button type="submit" class="btn-primary" id="startBtn" disabled>Start Quiz</button>
-            </form>
+        <section class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+            <div class="feature-card" style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Interactive Quiz</h3>
+                <p style="color: var(--text-secondary);">Answer scenario-based questions tailored to real-world software engineering challenges.</p>
+            </div>
+            <div class="feature-card" style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Personalized Insights</h3>
+                <p style="color: var(--text-secondary);">Get a custom radar chart showing your aptitude across the 4 main specialisations.</p>
+            </div>
+            <div class="feature-card" style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <h3 style="color: var(--success-color); margin-bottom: 1rem;">Expert Guidance</h3>
+                <p style="color: var(--text-secondary);">Connect with academic advisors to discuss your results and plan your path forward.</p>
+            </div>
         </section>
     </main>
-
-    <script src="js/validation.js"></script>
-    <script>
-        // Simple script to handle form submission and validation state for the index page
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('student-form');
-            const startBtn = document.getElementById('startBtn');
-            const inputs = form.querySelectorAll('input');
-
-            // Validate form on input change
-            inputs.forEach(input => {
-                input.addEventListener('input', () => {
-                    const isValid = typeof validateInput === 'function' ? validateInput(input) : true;
-                    checkFormValidity();
-                });
-            });
-
-            function checkFormValidity() {
-                let allValid = true;
-                inputs.forEach(input => {
-                    if (!input.classList.contains('is-valid')) {
-                        allValid = false;
-                    }
-                });
-                startBtn.disabled = !allValid;
-            }
-            
-            form.addEventListener('submit', (e) => {
-                // Save user details to local storage before moving to quiz
-                const userData = {
-                    name: document.getElementById('fullName').value,
-                    studentId: document.getElementById('studentId').value,
-                    email: document.getElementById('email').value
-                };
-                localStorage.setItem('studentData', JSON.stringify(userData));
-            });
-        });
-    </script>
 </body>
 </html>

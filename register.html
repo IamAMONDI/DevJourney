@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTrack Advisor | Register</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <span class="nav-brand">DevJourney Advisor</span>
+            <a href="index.html">Home</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="onboarding-section">
+            <h2>Let's Get Started</h2>
+            <p>Please provide your student details to begin the journey.</p>
+            
+            <form id="student-form" class="student-form" action="quiz.html" method="GET">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe">
+                    <span class="error-message" id="fullNameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentId">Student ID</label>
+                    <input type="text" id="studentId" name="studentId" required placeholder="e.g., 12345678">
+                    <span class="error-message" id="studentIdError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">ALU Institutional Email</label>
+                    <input type="email" id="email" name="email" required placeholder="j.doe@alustudent.com">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <button type="submit" class="btn-primary" id="startBtn" disabled>Proceed to Quiz</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/validation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('student-form');
+            const startBtn = document.getElementById('startBtn');
+            const inputs = form.querySelectorAll('input');
+
+            // Validate form on input change
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    const isValid = typeof validateInput === 'function' ? validateInput(input) : true;
+                    checkFormValidity();
+                });
+            });
+
+            function checkFormValidity() {
+                let allValid = true;
+                inputs.forEach(input => {
+                    if (!input.classList.contains('is-valid')) {
+                        allValid = false;
+                    }
+                });
+                startBtn.disabled = !allValid;
+            }
+            
+            form.addEventListener('submit', (e) => {
+                // Save user details to local storage before moving to quiz
+                const userData = {
+                    name: document.getElementById('fullName').value,
+                    studentId: document.getElementById('studentId').value,
+                    email: document.getElementById('email').value
+                };
+                localStorage.setItem('studentData', JSON.stringify(userData));
+            });
+        });
+    </script>
+</body>
+</html>
