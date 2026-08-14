@@ -1,0 +1,216 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+export default function Results() {
+  const canvasRef = useRef(null);
+  const [studentData, setStudentData] = useState({ name: 'Student' });
+  const [scores, setScores] = useState({ lowLevel: 1, fullStack: 1, arVr: 1, machineLearning: 1 });
+  const [topSpec, setTopSpec] = useState('');
+  const [topSpecDesc, setTopSpecDesc] = useState('');
+
+  const specNames = {
+    lowLevel: 'Low-Level Architecture',
+    fullStack: 'Full-Stack Engineering',
+    arVr: 'AR/VR Development',
+    machineLearning: 'Machine Learning'
+  };
+
+  const specDescriptions = {
+    lowLevel: 'You have a strong inclination towards systems programming, operating systems, and hardware-software interaction.',
+    fullStack: 'You enjoy building complete solutions from beautiful user interfaces to robust backend databases.',
+    arVr: 'You are fascinated by spatial computing, 3D graphics, and immersive interactive experiences.',
+    machineLearning: 'You love data, algorithms, and training AI models to solve complex predictive problems.'
+  };
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('studentData')) || { name: 'Student' };
+    const savedScores = JSON.parse(localStorage.getItem('quizScores')) || { lowLevel: 1, fullStack: 1, arVr: 1, machineLearning: 1 };
+    
+    setStudentData(savedData);
+    setScores(savedScores);
+
+    let maxScore = -1;
+    let top = '';
+    for (const [key, val] of Object.entries(savedScores)) {
+      if (val > maxScore) {
+        maxScore = val;
+        top = key;
+      }
+    }
+    
+    setTopSpec(specNames[top] || 'Balanced Profile');
+    setTopSpecDesc(specDescriptions[top] || 'You have diverse interests. Consider speaking with an advisor to narrow it down!');
+
+    renderRadarChart(canvasRef.current, savedScores);
+  }, []);
+
+  const renderRadarChart = (canvas, scoresData) => {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = Math.min(centerX, centerY) - 50;
+    const maxPossibleScore = 3; 
+
+    const data = [
+      { label: 'Low-Level', value: scoresData.lowLevel || 0 },
+      { label: 'Full-Stack', value: scoresData.fullStack || 0 },
+      { label: 'AR/VR', value: scoresData.arVr || 0 },
+      { label: 'Machine Learning', value: scoresData.machineLearning || 0 }
+    ];
+    
+    const numPoints = data.length;
+    const angleStep = (Math.PI * 2) / numPoints;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const rings = 4;
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.lineWidth = 1;
+    
+    for (let i = 1; i <= rings; i++) {
+      const r = (radius / rings) * i;
+      ctx.beginPath();
+      for (let j = 0; j <= numPoints; j++) {
+        const angle = j * angleStep - Math.PI / 2;
+        const x = centerX + r * Math.cos(angle);
+        const y = centerY + r * Math.sin(angle);
+        if (j === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    ctx.font = '14px Inter, sans-serif';
+    ctx.fillStyle = '#64748b'; 
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    for (let i = 0; i < numPoints; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.lineTo(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
+      ctx.stroke();
+      
+      const labelRadius = radius + 25;
+      const x = centerX + labelRadius * Math.cos(angle);
+      const y = centerY + labelRadius * Math.sin(angle);
+      ctx.fillText(data[i].label, x, y);
+    }
+
+    ctx.beginPath();
+    for (let i = 0; i < numPoints; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const normalizedVal = Math.max(0.1, Math.min(data[i].value / maxPossibleScore, 1.0));
+      const pointRadius = radius * normalizedVal;
+      
+      const x = centerX + pointRadius * Math.cos(angle);
+      const y = centerY + pointRadius * Math.sin(angle);
+      
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    
+    ctx.fillStyle = 'rgba(8, 122, 152, 0.4)'; // Teal with opacity
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#087A98'; // Teal
+    ctx.stroke();
+    
+    for (let i = 0; i < numPoints; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const normalizedVal = Math.max(0.1, Math.min(data[i].value / maxPossibleScore, 1.0));
+      const pointRadius = radius * normalizedVal;
+      
+      const x = centerX + pointRadius * Math.cos(angle);
+      const y = centerY + pointRadius * Math.sin(angle);
+      
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#cb721c'; // Orange
+      ctx.fill();
+      ctx.stroke(); 
+    }
+  };
+
+  return (
+    <div className="wrapper">
+      <header className="flex justify-between items-center py-6">
+        <h1 className="text-primary text-4xl font-bold">DevJourney Advisor</h1>
+        <nav className="primary-navigation">
+          <ul className="flex gap-6 list-none m-0 p-0 font-bold">
+            <li>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="link" className="text-lg font-bold text-foreground hover:text-secondary no-underline p-0 h-auto">Restart Quiz</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This will erase your current results and you'll have to take the quiz again.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction asChild>
+                      <Link to="/">Yes, restart</Link>
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main className="mt-12">
+        <section className="bg-primary text-primary-foreground p-12 rounded-xl">
+          <h2 className="text-secondary text-4xl mb-2">{studentData.name}'s Specialisation Profile</h2>
+          <p className="text-xl mb-12">Based on your responses, here is your compatibility score across the four BSE specialisations.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="bg-background p-8 rounded-xl flex justify-center">
+              <canvas ref={canvasRef} width={400} height={400} className="max-w-full" />
+            </div>
+            
+            <Card className="bg-[url('/images/simple-steps.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-3xl text-secondary">Top Recommendation:</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-background text-primary inline-block px-4 py-2 text-2xl font-bold mb-4 rounded-md">
+                  {topSpec}
+                </div>
+                <p className="text-lg">{topSpecDesc}</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button asChild size="lg" className="bg-background text-primary hover:bg-background/90 text-lg font-bold">
+              <Link to="/contact">Have Questions? Contact Us</Link>
+            </Button>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
