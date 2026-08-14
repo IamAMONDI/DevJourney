@@ -91,13 +91,12 @@ export default function Quiz() {
 
   return (
     <div className="wrapper">
-      <header className="flex justify-between items-center py-6">
-        <h1 className="text-primary text-4xl font-bold">DevJourney Advisor</h1>
+      <div className="flex justify-end py-4">
         <div className={`font-bold text-2xl ${timeLeft <= 60 ? 'text-destructive' : 'text-foreground'}`}>
           {timeString}
         </div>
-      </header>
-      <main className="mt-12">
+      </div>
+      <main className="mt-4">
         <section className="bg-primary text-primary-foreground p-12 rounded-xl">
           <Progress value={progress} className="mb-8 w-full h-3" />
       <div className="min-h-[300px]">

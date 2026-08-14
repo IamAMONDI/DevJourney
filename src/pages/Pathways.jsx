@@ -13,15 +13,6 @@ import {
 export default function Pathways() {
   return (
     <div className="wrapper">
-      <header className="flex justify-between items-center py-6">
-        <h1 className="text-primary text-4xl font-bold">Career Pathways: 2026 Strategic Briefing</h1>
-        <nav className="primary-navigation">
-          <ul className="flex gap-6 list-none m-0 p-0 font-bold">
-            <li><Link to="/" className="hover:text-secondary text-foreground no-underline">Back to Home</Link></li>
-          </ul>
-        </nav>
-      </header>
-
       <main className="mt-12 space-y-12">
         <section>
           <h3 className="text-primary text-2xl font-bold mb-6">1. High-Level Pathway Comparative Analysis</h3>

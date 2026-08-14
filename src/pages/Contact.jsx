@@ -18,15 +18,6 @@ export default function Contact() {
 
   return (
     <div className="wrapper">
-      <header className="flex justify-between items-center py-6">
-        <h1 className="text-primary text-4xl font-bold">DevJourney Advisor</h1>
-        <nav className="primary-navigation">
-          <ul className="flex gap-6 list-none m-0 p-0 font-bold">
-            <li><Link to="/" className="hover:text-secondary text-foreground no-underline">Home</Link></li>
-          </ul>
-        </nav>
-      </header>
-
       <main className="mt-12">
         <section className="bg-primary text-primary-foreground p-12 rounded-xl">
           <h2 className="text-secondary text-4xl mb-4">Contact an Advisor</h2>

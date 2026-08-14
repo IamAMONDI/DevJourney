@@ -6,17 +6,6 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 export default function Home() {
   return (
     <div className="wrapper">
-      <header className="flex justify-between items-center py-6">
-        <h1 className="text-primary text-4xl font-bold">DevJourney Advisor</h1>
-        <nav className="primary-navigation">
-          <ul className="flex gap-6 list-none m-0 p-0 font-bold">
-            <li><Link to="/register" className="hover:text-secondary text-foreground no-underline">Start Journey</Link></li>
-            <li><Link to="/pathways" className="hover:text-secondary text-foreground no-underline">Strategic Briefing</Link></li>
-            <li><Link to="/contact" className="hover:text-secondary text-foreground no-underline">Contact Us</Link></li>
-          </ul>
-        </nav>
-      </header>
-
       <main className="space-y-24 mt-12">
         <section className="bg-primary text-primary-foreground p-12 rounded-xl text-center shadow-lg bg-[url('/images/simple-steps.jpg')] bg-cover bg-center bg-no-repeat bg-blend-overlay bg-opacity-90">
           <h2 className="text-4xl text-secondary mb-4">Discover Your Tech Destiny</h2>

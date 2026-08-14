@@ -152,36 +152,29 @@ export default function Results() {
 
   return (
     <div className="wrapper">
-      <header className="flex justify-between items-center py-6">
-        <h1 className="text-primary text-4xl font-bold">DevJourney Advisor</h1>
-        <nav className="primary-navigation">
-          <ul className="flex gap-6 list-none m-0 p-0 font-bold">
-            <li>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="link" className="text-lg font-bold text-foreground hover:text-secondary no-underline p-0 h-auto">Restart Quiz</Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This will erase your current results and you'll have to take the quiz again.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction asChild>
-                      <Link to="/">Yes, restart</Link>
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <div className="flex justify-end py-4">
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="outline" className="text-lg font-bold border-destructive text-destructive hover:bg-destructive hover:text-white">Restart Quiz</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This will erase your current results and you'll have to take the quiz again.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction asChild>
+                <Link to="/">Yes, restart</Link>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
 
-      <main className="mt-12">
+      <main className="mt-4">
         <section className="bg-primary text-primary-foreground p-12 rounded-xl">
           <h2 className="text-secondary text-4xl mb-2">{studentData.name}'s Specialisation Profile</h2>
           <p className="text-xl mb-12">Based on your responses, here is your compatibility score across the four BSE specialisations.</p>
