@@ -14,6 +14,8 @@ import Results from './pages/Results';
 import { Toaster } from '@/components/ui/sonner';
 import './index.css';
 
+import Footer from './components/Footer';
+
 function App() {
   return (
     <Router>
@@ -33,9 +35,7 @@ function App() {
             <Route path="/results" element={<Results />} />
           </Routes>
         </main>
-        <footer className="text-center py-6 mt-10">
-          <p className="text-muted-foreground">&copy; 2026 TechTrack Advisor. All rights reserved.</p>
-        </footer>
+        <Footer />
         <Toaster />
       </div>
     </Router>

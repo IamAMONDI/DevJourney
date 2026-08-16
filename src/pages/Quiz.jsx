@@ -8,32 +8,102 @@ import { Progress } from "@/components/ui/progress";
 const questions = [
   {
     id: 1,
-    text: "When facing a complex problem, I prefer to...",
+    text: "What is your preferred way to solve a complex problem?",
     options: [
-      { text: "Break it down into logical algorithms and optimize the memory usage.", type: "lowLevel" },
-      { text: "Design a visually engaging interface that guides the user to a solution.", type: "fullStack" },
-      { text: "Create an immersive 3D simulation to visualize the problem space.", type: "arVr" },
-      { text: "Train a model using existing data to predict the outcome.", type: "machineLearning" }
+      { text: "The \"Metal\" Approach: Getting as close to the hardware as possible to understand how bits move through registers.", type: "lowLevel" },
+      { text: "The \"Product\" Approach: Building a complete user journey from the interface to the underlying database.", type: "fullStack" },
+      { text: "The \"Spatial\" Approach: Solving puzzles in 3D space, like how a user should interact with a digital object using their hands.", type: "arVr" },
+      { text: "The \"Probabilistic\" Approach: Training a system to recognize patterns in data rather than writing explicit rules for every outcome.", type: "machineLearning" }
     ]
   },
   {
     id: 2,
-    text: "Which project sounds most exciting to you?",
+    text: "Which set of programming tools would you be most excited to master?",
     options: [
-      { text: "Writing a custom operating system kernel or device driver.", type: "lowLevel" },
-      { text: "Building a scalable e-commerce platform with a beautiful front-end.", type: "fullStack" },
-      { text: "Developing an application that lets users interact with holograms.", type: "arVr" },
-      { text: "Creating a recommendation engine that suggests movies based on watch history.", type: "machineLearning" }
+      { text: "C, Assembly, and hardware debuggers like JTAG or oscilloscopes.", type: "lowLevel" },
+      { text: "JavaScript (React/Node.js) and AI-powered coding tools like GitHub Copilot or Cursor.", type: "fullStack" },
+      { text: "C#, Unity, Unreal Engine, and spatial SDKs like ARKit.", type: "arVr" },
+      { text: "Python, PyTorch, TensorFlow, and data manipulation libraries like Pandas.", type: "machineLearning" }
     ]
   },
   {
     id: 3,
-    text: "What type of data processing do you find most interesting?",
+    text: "How do you feel about mathematics in your daily work?",
     options: [
-      { text: "Bitwise operations and memory pointers.", type: "lowLevel" },
-      { text: "Handling JSON APIs and database queries.", type: "fullStack" },
-      { text: "Real-time spatial mapping and sensor fusion.", type: "arVr" },
-      { text: "Large datasets for neural network training and validation.", type: "machineLearning" }
+      { text: "I enjoy digital logic, binary arithmetic, and understanding clock trees and power supply states.", type: "lowLevel" },
+      { text: "I prefer focusing on logic flow and architecture; math is a tool I use only when strictly necessary for algorithms.", type: "fullStack" },
+      { text: "I love 3D math, including linear algebra, vectors, matrices, and quaternions for smooth rotations.", type: "arVr" },
+      { text: "I am fascinated by statistics, probability, and calculus to understand how models optimize predictions.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 4,
+    text: "What kind of tangible output gives you the most professional satisfaction?",
+    options: [
+      { text: "A reliable piece of firmware that makes a physical motor spin or a medical device function for a decade.", type: "lowLevel" },
+      { text: "A visible, interactive web application used by thousands of people daily.", type: "fullStack" },
+      { text: "An immersive virtual world or augmented reality overlay that people experience physically.", type: "arVr" },
+      { text: "An \"intelligent\" recommendation engine or a predictive model that identifies insights from messy data.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 5,
+    text: "How do you prefer to handle \"System Behavior\"?",
+    options: [
+      { text: "Strictly Deterministic: I want to write code where a specific input always produces the exact same hardware result.", type: "lowLevel" },
+      { text: "Cohesive & Scalable: I want to connect layers of a system (frontend/backend) to ensure one cohesive, reliable unit.", type: "fullStack" },
+      { text: "Immersive & Experiential: I want to design for \"Presence\"—the feeling of truly \"being there\" in a digital environment.", type: "arVr" },
+      { text: "Adaptive & Probabilistic: I am comfortable with uncertainty and want to build systems that learn and improve over time.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 6,
+    text: "Which system constraint sounds like an interesting challenge to you?",
+    options: [
+      { text: "Working with extreme resource limits, such as a microcontroller with only 64 bytes of RAM.", type: "lowLevel" },
+      { text: "Managing high-traffic cloud deployments and ensuring application security across the stack.", type: "fullStack" },
+      { text: "Optimizing rendering pipelines to maintain high frame rates and prevent user motion sickness.", type: "arVr" },
+      { text: "Monitoring for \"data drift\" to ensure models remain accurate as real-world data evolves.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 7,
+    text: "How do you feel about the role of AI in development?",
+    options: [
+      { text: "I see it as a high-level tool, but it can't replace the need for \"mechanical sympathy\" and deep hardware knowledge.", type: "lowLevel" },
+      { text: "I want to be an \"AI-Powered\" developer, using AI agents to build products 3–5x faster than traditional coding.", type: "fullStack" },
+      { text: "I am excited about using AI to create more natural interactions and better spatial mapping in 3D.", type: "arVr" },
+      { text: "I want to be the one building the AI models and intelligent functionality that others integrate into their apps.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 8,
+    text: "Which career trajectory is more appealing to you?",
+    options: [
+      { text: "Becoming an expert in a specialized niche like Automotive safety or medical systems, where 30 years of experience is highly valued.", type: "lowLevel" },
+      { text: "Growing from a junior developer to a CTO, with the flexibility to work for any company with a digital product.", type: "fullStack" },
+      { text: "Moving from a Junior XR Developer to a \"Head of Immersive Technology\" in a rapidly expanding market.", type: "arVr" },
+      { text: "Moving toward a specialized research or scientist path, commanding the highest salaries for deep data expertise.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 9,
+    text: "What kind of industry application sounds most exciting?",
+    options: [
+      { text: "Designing anti-lock braking systems or IoT sensors for smart farming.", type: "lowLevel" },
+      { text: "Building e-commerce platforms, SaaS dashboards, or social media applications.", type: "fullStack" },
+      { text: "Creating surgical simulations for medical training or architectural visualizations.", type: "arVr" },
+      { text: "Building fraud detection systems, autonomous vehicle navigation, or natural language translators.", type: "machineLearning" }
+    ]
+  },
+  {
+    id: 10,
+    text: "What is your \"ideal\" daily work rhythm?",
+    options: [
+      { text: "Long periods of deep, methodical debugging often involving physical hardware and logic analyzers.", type: "lowLevel" },
+      { text: "A fast-paced environment with varied tasks, switching between user interface design and server-side logic.", type: "fullStack" },
+      { text: "A creative-technical blend, collaborating with 3D artists to test scale, comfort, and interaction feel.", type: "arVr" },
+      { text: "A research-oriented day spent analyzing datasets, training models, and reading new technical papers.", type: "machineLearning" }
     ]
   }
 ];

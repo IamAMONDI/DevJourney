@@ -28,11 +28,23 @@ export default function Results() {
     machineLearning: 'Machine Learning'
   };
 
-  const specDescriptions = {
-    lowLevel: 'You have a strong inclination towards systems programming, operating systems, and hardware-software interaction.',
-    fullStack: 'You enjoy building complete solutions from beautiful user interfaces to robust backend databases.',
-    arVr: 'You are fascinated by spatial computing, 3D graphics, and immersive interactive experiences.',
-    machineLearning: 'You love data, algorithms, and training AI models to solve complex predictive problems.'
+  const specDetails = {
+    lowLevel: {
+      profile: 'You are a "metal" enthusiast who values robustness and correctness above all else. You enjoy understanding the nitty-gritty of hardware and are comfortable with resource-constrained environments.',
+      context: 'High stability and demand in automotive and healthcare sectors.'
+    },
+    fullStack: {
+      profile: 'You are a product-builder who enjoys seeing tangible results and has a versatile mindset. You want maximum job flexibility and are ready to embrace the "AI-augmented" development workflow.',
+      context: 'Transitioning into "AI-Integrated" roles where speed and efficiency are supercharged by AI tools.'
+    },
+    arVr: {
+      profile: 'You are a creative technologist fascinated by spatial computing and human-computer interaction. You enjoy the blend of advanced 3D math and immersive design.',
+      context: 'Rapid growth driven by platforms like Apple Vision Pro and Meta Quest.'
+    },
+    machineLearning: {
+      profile: 'You have a researcher’s mindset, finding it fascinating to extract intelligence from data. You are comfortable with ambiguity and enjoy high-level mathematics and experimentation.',
+      context: 'One of the highest-paying pathways, with demand jumping 40% recently.'
+    }
   };
 
   useEffect(() => {
@@ -52,7 +64,7 @@ export default function Results() {
     }
     
     setTopSpec(specNames[top] || 'Balanced Profile');
-    setTopSpecDesc(specDescriptions[top] || 'You have diverse interests. Consider speaking with an advisor to narrow it down!');
+    setTopSpecDesc(specDetails[top] || { profile: 'You have diverse interests. Consider speaking with an advisor to narrow it down!', context: '' });
 
     renderRadarChart(canvasRef.current, savedScores);
   }, []);
@@ -65,7 +77,7 @@ export default function Results() {
     const centerX = width / 2;
     const centerY = height / 2;
     const radius = Math.min(centerX, centerY) - 50;
-    const maxPossibleScore = 3; 
+    const maxPossibleScore = 10; 
 
     const data = [
       { label: 'Low-Level', value: scoresData.lowLevel || 0 },
@@ -192,7 +204,10 @@ export default function Results() {
                 <div className="bg-background text-primary inline-block px-4 py-2 text-2xl font-bold mb-4 rounded-md">
                   {topSpec}
                 </div>
-                <p className="text-lg">{topSpecDesc}</p>
+                <p className="text-lg font-medium mb-4"><span className="text-primary/70">The Profile:</span> {topSpecDesc.profile}</p>
+                {topSpecDesc.context && (
+                  <p className="text-lg font-medium"><span className="text-primary/70">2026 Context:</span> {topSpecDesc.context}</p>
+                )}
               </CardContent>
             </Card>
           </div>

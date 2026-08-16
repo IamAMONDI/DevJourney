@@ -1,17 +1,20 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import { ModeToggle } from "./ModeToggle"
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <header className="relative z-50 flex justify-between items-center py-6 px-4 max-w-[1000px] mx-auto border-b border-border/40 mb-8 w-full">
@@ -19,75 +22,66 @@ export default function Navbar() {
         DevJourney
       </Link>
       
-      <NavigationMenu>
-        <NavigationMenuList className="gap-2">
-          <NavigationMenuItem>
-            <Link to="/">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${location.pathname === '/' ? 'bg-accent' : ''} text-lg font-bold bg-transparent`}>
-                Home
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className={`text-lg font-bold bg-transparent ${location.pathname.startsWith('/pathways') ? 'bg-accent' : ''}`}>
-              Pathways
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-card">
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link to="/pathways" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none mb-1 text-primary">Overview</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">View all pathways side-by-side.</p>
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link to="/pathways/low-level" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none mb-1">Low-Level / Systems</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Hardware, kernels, and high performance.</p>
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link to="/pathways/full-stack" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none mb-1">Full-Stack</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">End-to-end architecture and integration.</p>
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link to="/pathways/ar-vr" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none mb-1">AR/VR (XR)</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Spatial computing and immersive 3D.</p>
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link to="/pathways/machine-learning" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none mb-1">Machine Learning</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Probabilistic models and AI systems.</p>
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+      <nav className="flex items-center gap-2">
+        <Button variant="ghost" asChild className={`text-lg font-bold ${location.pathname === '/' ? 'bg-accent' : ''}`}>
+          <Link to="/">Home</Link>
+        </Button>
 
-          <NavigationMenuItem>
-            <Link to="/contact">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${location.pathname === '/contact' ? 'bg-accent' : ''} text-lg font-bold bg-transparent`}>
-                Contact
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`text-lg font-bold gap-1 ${location.pathname.startsWith('/pathways') ? 'bg-accent' : ''}`}>
+              Pathways <ChevronDown className="h-4 w-4 opacity-50" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-[300px] p-2">
+            <DropdownMenuItem className="cursor-pointer p-3" onClick={() => navigate('/pathways')}>
+              <div className="flex flex-col">
+                <span className="font-bold text-primary">Overview</span>
+                <span className="text-xs text-muted-foreground">View all pathways side-by-side</span>
+              </div>
+            </DropdownMenuItem>
+            
+            <DropdownMenuSeparator />
+            
+            <DropdownMenuLabel className="text-xs font-bold uppercase tracking-wider text-muted-foreground mt-2">
+              Specialisations
+            </DropdownMenuLabel>
+            
+            <DropdownMenuItem className="cursor-pointer p-3 mt-1" onClick={() => navigate('/pathways/low-level')}>
+              <div className="flex flex-col">
+                <span className="font-semibold">Low-Level / Systems</span>
+                <span className="text-xs text-muted-foreground">Hardware, kernels, & high performance</span>
+              </div>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem className="cursor-pointer p-3" onClick={() => navigate('/pathways/full-stack')}>
+              <div className="flex flex-col">
+                <span className="font-semibold">Full-Stack Engineering</span>
+                <span className="text-xs text-muted-foreground">End-to-end architecture</span>
+              </div>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem className="cursor-pointer p-3" onClick={() => navigate('/pathways/ar-vr')}>
+              <div className="flex flex-col">
+                <span className="font-semibold">AR/VR (XR) Development</span>
+                <span className="text-xs text-muted-foreground">Spatial computing & 3D environments</span>
+              </div>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem className="cursor-pointer p-3" onClick={() => navigate('/pathways/machine-learning')}>
+              <div className="flex flex-col">
+                <span className="font-semibold">Machine Learning</span>
+                <span className="text-xs text-muted-foreground">Probabilistic models & AI systems</span>
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <Button variant="ghost" asChild className={`text-lg font-bold ${location.pathname === '/contact' ? 'bg-accent' : ''}`}>
+          <Link to="/contact">Contact</Link>
+        </Button>
+        <ModeToggle />
+      </nav>
     </header>
   );
 }
