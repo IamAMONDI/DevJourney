@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from "@/components/ui/progress";
-
+import { motion, AnimatePresence } from 'framer-motion';
+import { Cpu, Layers, Glasses, Brain } from 'lucide-react';
+import { playSelectSound, playNextSound, playTimerSound, playFinishSound } from '@/utils/audio';
 
 const questions = [
   {
@@ -108,6 +110,13 @@ const questions = [
   }
 ];
 
+const optionIcons = {
+  lowLevel: Cpu,
+  fullStack: Layers,
+  arVr: Glasses,
+  machineLearning: Brain
+};
+
 export default function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
@@ -121,8 +130,12 @@ export default function Quiz() {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
+        if (prev <= 15 && prev > 1) {
+          playTimerSound();
+        }
         if (prev <= 1) {
           clearInterval(timer);
+          playFinishSound();
           finishQuiz(userAnswers);
           return 0;
         }
@@ -143,74 +156,125 @@ export default function Quiz() {
 
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
+      playNextSound();
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
+      playFinishSound();
       finishQuiz(userAnswers);
     }
   };
 
   const handlePrev = () => {
     if (currentQuestionIndex > 0) {
+      playNextSound();
       setCurrentQuestionIndex((prev) => prev - 1);
     }
+  };
+
+  const handleOptionSelect = (type) => {
+    playSelectSound();
+    setUserAnswers({ ...userAnswers, [question.id]: type });
   };
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
   const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
+  const containerVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.4,
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }
+    },
+    exit: { opacity: 0, x: -50, transition: { duration: 0.2 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+  };
+
   return (
     <div className="wrapper">
       <div className="flex justify-end py-4">
-        <div className={`font-bold text-2xl ${timeLeft <= 60 ? 'text-destructive' : 'text-foreground'}`}>
+        <motion.div 
+          className={`font-bold text-2xl ${timeLeft <= 60 ? 'text-destructive' : 'text-foreground'}`}
+          animate={timeLeft <= 15 ? { scale: [1, 1.1, 1], color: ['#cb721c', '#ff0000', '#cb721c'] } : {}}
+          transition={{ duration: 1, repeat: timeLeft <= 15 ? Infinity : 0 }}
+        >
           {timeString}
-        </div>
+        </motion.div>
       </div>
-      <main className="mt-4">
-        <section className="bg-primary text-primary-foreground p-12 rounded-xl">
+      <main className="mt-4 overflow-hidden">
+        <section className="bg-primary text-primary-foreground p-12 rounded-xl min-h-[600px] flex flex-col">
           <Progress value={progress} className="mb-8 w-full h-3" />
-      <div className="min-h-[300px]">
-        <h2 className="text-black font-bold text-3xl mb-8">Q{currentQuestionIndex + 1}: {question.text}</h2>
+          
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={currentQuestionIndex}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="flex-1"
+            >
+              <h2 className="text-black font-bold text-3xl mb-8">Q{currentQuestionIndex + 1}: {question.text}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {question.options.map((option, i) => {
-            const isSelected = userAnswers[question.id] === option.type;
-            return (
-              <Card
-                key={i}
-                onClick={() => setUserAnswers({ ...userAnswers, [question.id]: option.type })}
-                className={`cursor-pointer transition-colors ${isSelected ? 'border-secondary border-4 bg-secondary/10' : 'hover:bg-primary-foreground/10'}`}
-              >
-                <CardContent className="p-6 flex items-center h-full">
-                  <span className="text-lg">{option.text}</span>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {question.options.map((option, i) => {
+                  const isSelected = userAnswers[question.id] === option.type;
+                  const Icon = optionIcons[option.type];
+                  return (
+                    <motion.div key={i} variants={itemVariants}>
+                      <Card
+                        onClick={() => handleOptionSelect(option.type)}
+                        className={`cursor-pointer transition-all duration-200 h-full ${isSelected ? 'border-black border-4 bg-black/10 scale-[1.02]' : 'hover:bg-primary-foreground/10 hover:scale-[1.02]'}`}
+                      >
+                        <CardContent className="p-6 flex flex-col gap-4 h-full">
+                          <div className="flex items-center gap-3">
+                            <div className={`p-2 rounded-lg ${isSelected ? 'bg-black text-white' : 'bg-primary/20 text-primary'}`}>
+                              <Icon size={24} />
+                            </div>
+                            <span className="font-bold uppercase tracking-wider text-sm opacity-70">
+                              {option.type.replace(/([A-Z])/g, ' $1').trim()}
+                            </span>
+                          </div>
+                          <span className="text-lg">{option.text}</span>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-      <div className="mt-12 flex justify-between">
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={handlePrev}
-          disabled={currentQuestionIndex === 0}
-          className="text-primary border-primary text-lg"
-        >
-          Previous
-        </Button>
-        <Button
-          size="lg"
-          onClick={handleNext}
-          disabled={!hasAnswered}
-          className="bg-black text-white hover:bg-black/80 font-bold text-lg"
-        >
-          {currentQuestionIndex === questions.length - 1 ? 'See Results' : 'Next'}
-        </Button>
-      </div>
-    </section>
+          <div className="mt-12 flex justify-between">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={handlePrev}
+              disabled={currentQuestionIndex === 0}
+              className="text-primary border-primary text-lg"
+            >
+              Previous
+            </Button>
+            <Button
+              size="lg"
+              onClick={handleNext}
+              disabled={!hasAnswered}
+              className="bg-black text-white hover:bg-black/80 font-bold text-lg"
+            >
+              {currentQuestionIndex === questions.length - 1 ? 'See Results' : 'Next'}
+            </Button>
+          </div>
+        </section>
       </main >
-    </div >
+    </div>
   );
 }
