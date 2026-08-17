@@ -199,19 +199,19 @@ export default function Results() {
             </div>
             
             <Card 
-              className="bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg"
+              className="bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg text-left w-full"
               style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/simple-steps.jpg')` }}
             >
-              <CardHeader>
+              <CardHeader className="text-left">
                 <CardTitle className="text-3xl text-secondary">Top Recommendation:</CardTitle>
               </CardHeader>
-              <CardContent className="text-left">
-                <div className="bg-background text-primary inline-block px-4 py-2 text-2xl font-bold mb-4 rounded-md">
+              <CardContent className="text-left flex flex-col items-start">
+                <div className="bg-background text-primary inline-block px-4 py-2 text-2xl font-bold mb-6 rounded-md">
                   {topSpec}
                 </div>
-                <p className="text-lg font-medium mb-4"><span className="text-primary/70">The Profile:</span> {topSpecDesc.profile}</p>
+                <p className="text-xl font-medium mb-4 text-left"><span className="text-primary/70">The Profile:</span> {topSpecDesc.profile}</p>
                 {topSpecDesc.context && (
-                  <p className="text-lg font-medium"><span className="text-primary/70">2026 Context:</span> {topSpecDesc.context}</p>
+                  <p className="text-xl font-medium text-left"><span className="text-primary/70">2026 Context:</span> {topSpecDesc.context}</p>
                 )}
               </CardContent>
             </Card>
