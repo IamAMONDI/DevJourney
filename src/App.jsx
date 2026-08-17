@@ -42,7 +42,9 @@ function App() {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/results" element={<Results />} />
           </Routes>
-        </main>
+        </div>
+        
+        {/* Global Footer */}
         <Footer />
         <Toaster />
       </div>
