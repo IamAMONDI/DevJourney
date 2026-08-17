@@ -8,7 +8,7 @@ export default function Footer() {
       {/* Footer Hero Section */}
       <section className="bg-secondary text-secondary-foreground py-16 px-4 text-center">
         <div className="max-w-[800px] mx-auto space-y-6">
-          <h2 className="text-4xl font-bold mb-4">Ready to find your path?</h2>
+          <h2 className="text-4xl font-bold text-black mb-4">Ready to find your path?</h2>
           <p className="text-xl mb-8 opacity-90">
             Take the 3-minute assessment and discover which software engineering specialization fits your mind.
           </p>

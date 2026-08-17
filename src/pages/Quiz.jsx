@@ -170,7 +170,7 @@ export default function Quiz() {
         <section className="bg-primary text-primary-foreground p-12 rounded-xl">
           <Progress value={progress} className="mb-8 w-full h-3" />
       <div className="min-h-[300px]">
-        <h2 className="text-secondary text-3xl mb-8">Q{currentQuestionIndex + 1}: {question.text}</h2>
+        <h2 className="text-black font-bold text-3xl mb-8">Q{currentQuestionIndex + 1}: {question.text}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {question.options.map((option, i) => {
@@ -204,7 +204,7 @@ export default function Quiz() {
           size="lg"
           onClick={handleNext}
           disabled={!hasAnswered}
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-lg"
+          className="bg-black text-white hover:bg-black/80 font-bold text-lg"
         >
           {currentQuestionIndex === questions.length - 1 ? 'See Results' : 'Next'}
         </Button>

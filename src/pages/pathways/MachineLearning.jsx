@@ -13,16 +13,21 @@ export default function MachineLearning() {
       </div>
 
       {/* Pathway Hero/Banner */}
-      <Card className="bg-[url('/images/tech_hero.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-4xl text-secondary">Machine Learning & AI Engineering</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-lg pb-12">
-          <p className="text-xl font-semibold opacity-90">Deep Dive Career Guide</p>
-          <p>
-            Architecting systems that learn, adapt, and evolve through data. Mastering the probabilistic logic of the future.
-          </p>
-        </CardContent>
+      <Card className="relative bg-black text-white border-none shadow-lg overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/ml_bg.jpg" alt="Machine Learning Background" className="w-full h-full object-cover opacity-50" />
+        </div>
+        <div className="relative z-10">
+          <CardHeader>
+            <CardTitle className="text-4xl text-white">Machine Learning & AI Engineering</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-lg pb-12">
+            <p className="text-xl font-semibold opacity-90">Deep Dive Career Guide</p>
+            <p>
+              Architecting systems that learn, adapt, and evolve through data. Mastering the probabilistic logic of the future.
+            </p>
+          </CardContent>
+        </div>
       </Card>
 
       {/* Video Placeholder */}
@@ -32,7 +37,7 @@ export default function MachineLearning() {
           <iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube.com/embed/crjYu1KzFyI" 
+            src="https://www.youtube.com/embed/qYNweeDHiyU" 
             title="Deep Dive Career Guide" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -9,13 +9,34 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { motion } from 'framer-motion';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
 
 export default function Pathways() {
   return (
     <div className="wrapper">
-      <main className="mt-12 space-y-12">
-        <section>
-          <h3 className="text-primary text-2xl font-bold mb-6">1. High-Level Pathway Comparative Analysis</h3>
+      <motion.main 
+        className="mt-12 space-y-12"
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
+        <motion.section variants={fadeInUp}>
+          <h3 className="text-black text-2xl font-bold mb-6">1. High-Level Pathway Comparative Analysis</h3>
           <div className="overflow-x-auto">
             <Table className="mb-8 border border-border">
               <TableHeader className="bg-primary hover:bg-primary">
@@ -45,55 +66,63 @@ export default function Pathways() {
               </TableBody>
             </Table>
           </div>
-        </section>
+        </motion.section>
 
-        <Card className="bg-[url('/images/simple-steps.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl text-secondary">2. Low-Level / Systems Engineering: The Foundation of Performance</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-lg">
-            <p>Systems programming remains the strategic bedrock of the industry. It focuses on the design of deterministic systems where abstractions are thin and skills possess high longevity because they are rooted in the constant physics of hardware.</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Robustness:</strong> Designing systems to handle physical hardware edge cases and failure modes.</li>
-              <li><strong>Correctness:</strong> Utilizing strict memory management and ownership models to ensure execution integrity.</li>
-              <li><strong>Performance:</strong> Relentless optimization targeting instruction-level throughput and sub-millisecond latency.</li>
-            </ul>
-          </CardContent>
-        </Card>
+        <motion.div variants={fadeInUp} whileInView="visible" initial="hidden" viewport={{ once: true, margin: "-50px" }}>
+          <Card className="bg-primary text-primary-foreground border-none shadow-lg hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-3xl text-black">2. Low-Level / Systems Engineering: The Foundation of Performance</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-lg">
+              <p>Systems programming remains the strategic bedrock of the industry. It focuses on the design of deterministic systems where abstractions are thin and skills possess high longevity because they are rooted in the constant physics of hardware.</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Robustness:</strong> Designing systems to handle physical hardware edge cases and failure modes.</li>
+                <li><strong>Correctness:</strong> Utilizing strict memory management and ownership models to ensure execution integrity.</li>
+                <li><strong>Performance:</strong> Relentless optimization targeting instruction-level throughput and sub-millisecond latency.</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <Card className="bg-primary text-primary-foreground border-none shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl text-secondary">3. AR/VR (XR) Development: Building Immersive Realities</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-lg">
-            <p>XR developers specialize in spatial computing, building applications that bridge the gap between digital content and physical perception across healthcare, manufacturing, and social platforms.</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Languages:</strong> C#, C++, JavaScript, TypeScript.</li>
-              <li><strong>Engines:</strong> Unity, Unreal Engine, WebXR.</li>
-              <li><strong>3D Math:</strong> Quaternions, Vectors, Linear Algebra, and Raycasting.</li>
-            </ul>
-          </CardContent>
-        </Card>
+        <motion.div variants={fadeInUp} whileInView="visible" initial="hidden" viewport={{ once: true, margin: "-50px" }}>
+          <Card className="bg-primary text-primary-foreground border-none shadow-lg hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-3xl text-black">3. AR/VR (XR) Development: Building Immersive Realities</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-lg">
+              <p>XR developers specialize in spatial computing, building applications that bridge the gap between digital content and physical perception across healthcare, manufacturing, and social platforms.</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Languages:</strong> C#, C++, JavaScript, TypeScript.</li>
+                <li><strong>Engines:</strong> Unity, Unreal Engine, WebXR.</li>
+                <li><strong>3D Math:</strong> Quaternions, Vectors, Linear Algebra, and Raycasting.</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <Card className="bg-[url('/images/simple-steps.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl text-secondary">4. Full-Stack Development: The Architecture of Integration</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-lg">
-            <p>In 2026, Full-Stack engineering has evolved into the "Architecture of Integration," where the primary goal is connecting disparate services into a cohesive, deterministic software system.</p>
-          </CardContent>
-        </Card>
+        <motion.div variants={fadeInUp} whileInView="visible" initial="hidden" viewport={{ once: true, margin: "-50px" }}>
+          <Card className="bg-primary text-primary-foreground border-none shadow-lg hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-3xl text-black">4. Full-Stack Development: The Architecture of Integration</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-lg">
+              <p>In 2026, Full-Stack engineering has evolved into the "Architecture of Integration," where the primary goal is connecting disparate services into a cohesive, deterministic software system.</p>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <Card className="bg-primary text-primary-foreground border-none shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl text-secondary">5. Machine Learning (AI) Engineering: Mastering Probabilistic Systems</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-lg">
-            <p>AI Engineering is the mastery of systems that derive behavior from data patterns rather than predefined rules. This introduces a probabilistic mental model that contrasts sharply with traditional engineering.</p>
-          </CardContent>
-        </Card>
+        <motion.div variants={fadeInUp} whileInView="visible" initial="hidden" viewport={{ once: true, margin: "-50px" }}>
+          <Card className="bg-primary text-primary-foreground border-none shadow-lg hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-3xl text-black">5. Machine Learning (AI) Engineering: Mastering Probabilistic Systems</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-lg">
+              <p>AI Engineering is the mastery of systems that derive behavior from data patterns rather than predefined rules. This introduces a probabilistic mental model that contrasts sharply with traditional engineering.</p>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-      </main>
+      </motion.main>
     </div>
   );
 }

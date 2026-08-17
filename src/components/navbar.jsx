@@ -17,7 +17,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <header className="relative z-50 flex justify-between items-center py-6 px-4 max-w-[1000px] mx-auto border-b border-border/40 mb-8 w-full">
+    <header className="relative z-50 flex justify-between items-center py-6 px-4 md:px-8 border-b border-border/40 mb-8 w-full">
       <Link to="/" className="text-primary text-3xl font-bold no-underline hover:opacity-80 transition-opacity">
         DevJourney
       </Link>

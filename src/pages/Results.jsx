@@ -16,7 +16,7 @@ import {
 
 export default function Results() {
   const canvasRef = useRef(null);
-  const [studentData, setStudentData] = useState({ name: 'Student' });
+  const [firstName, setFirstName] = useState('Student');
   const [scores, setScores] = useState({ lowLevel: 1, fullStack: 1, arVr: 1, machineLearning: 1 });
   const [topSpec, setTopSpec] = useState('');
   const [topSpecDesc, setTopSpecDesc] = useState('');
@@ -48,10 +48,12 @@ export default function Results() {
   };
 
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem('studentData')) || { name: 'Student' };
+    const savedData = JSON.parse(localStorage.getItem('studentData')) || {};
+    const nameString = savedData.fullName || savedData.name || 'Student';
+    setFirstName(nameString.split(' ')[0]);
     const savedScores = JSON.parse(localStorage.getItem('quizScores')) || { lowLevel: 1, fullStack: 1, arVr: 1, machineLearning: 1 };
     
-    setStudentData(savedData);
+    setScores(savedScores);
     setScores(savedScores);
 
     let maxScore = -1;
@@ -188,7 +190,7 @@ export default function Results() {
 
       <main className="mt-4">
         <section className="bg-primary text-primary-foreground p-12 rounded-xl">
-          <h2 className="text-secondary text-4xl mb-2">{studentData.name}'s Specialisation Profile</h2>
+          <h2 className="text-secondary text-4xl mb-2 font-bold">{firstName}'s Specialisation Profile</h2>
           <p className="text-xl mb-12">Based on your responses, here is your compatibility score across the four BSE specialisations.</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -200,7 +202,7 @@ export default function Results() {
               <CardHeader>
                 <CardTitle className="text-3xl text-secondary">Top Recommendation:</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="text-left">
                 <div className="bg-background text-primary inline-block px-4 py-2 text-2xl font-bold mb-4 rounded-md">
                   {topSpec}
                 </div>

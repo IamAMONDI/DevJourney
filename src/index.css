@@ -16,8 +16,8 @@
     --primary: 205 96% 39%;
     --primary-foreground: 0 0% 100%;
     
-    /* Muted Slate #5379AE */
-    --secondary: 215 36% 50%;
+    /* Black (Previously Muted Slate) */
+    --secondary: 0 0% 0%;
     --secondary-foreground: 0 0% 100%;
     
     /* Light Pastel Blue #A8C4EC / Muted */
@@ -48,8 +48,8 @@
     --primary: 205 96% 45%;
     --primary-foreground: 0 0% 100%;
     
-    /* Muted Slate #5379AE */
-    --secondary: 215 36% 50%;
+    /* Black (Previously Muted Slate) */
+    --secondary: 0 0% 0%;
     --secondary-foreground: 0 0% 100%;
     
     /* Deep Navy for borders/muted */
@@ -69,6 +69,9 @@
   * {
     @apply border-border;
   }
+  html {
+    font-size: 18px; /* Scales up all rem-based Tailwind utilities globally */
+  }
   body {
     @apply bg-background text-foreground;
     font-family: sans-serif;
@@ -80,15 +83,15 @@
     @apply font-bold text-foreground;
   }
   h1 {
-    font-size: 4.5rem;
+    font-size: 4.5rem; 
     line-height: 1.1;
     @apply text-center font-extrabold;
   }
   h2 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; 
   }
   h3 {
-    font-size: 1.75rem;
+    font-size: 1.75rem; 
   }
   a {
     @apply text-primary transition-colors;

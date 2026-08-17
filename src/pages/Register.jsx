@@ -20,7 +20,7 @@ export default function Register() {
     <div className="wrapper">
       <main className="mt-12">
         <section className="bg-primary text-primary-foreground p-12 rounded-xl">
-          <h2 className="text-secondary text-4xl mb-4">Let's Get Started</h2>
+          <h2 className="text-black font-bold text-4xl mb-4">Let's Get Started</h2>
           <p className="text-xl mb-8">Please provide your student details to begin the journey.</p>
           
           <form onSubmit={handleSubmit} className="space-y-6 max-w-md">
@@ -61,7 +61,7 @@ export default function Register() {
               />
             </div>
 
-            <Button type="submit" disabled={!isFormValid} size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full text-lg mt-8">
+            <Button type="submit" disabled={!isFormValid} size="lg" className="bg-black text-white hover:bg-black/80 font-bold w-full text-lg mt-8">
               Proceed to Quiz
             </Button>
           </form>
