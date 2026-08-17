@@ -19,11 +19,19 @@ const staggerContainer = {
   }
 };
 
+/**
+ * Home Component
+ * The landing page for the DevJourney application.
+ * Highlights the main value proposition, features, and testimonials.
+ */
 export default function Home() {
   return (
     <div className="wrapper">
-      <main className="space-y-24 mt-12 mb-24">
-        {/* Hero Section */}
+      <main className="mt-8 space-y-16">
+        
+        {/* HERO SECTION 
+            Uses a background image with overlay and framer-motion for entry animations. 
+        */}
         <section className="relative bg-black text-white p-12 rounded-xl text-center shadow-lg overflow-hidden">
           <div className="absolute inset-0 z-0">
              <img src={`${import.meta.env.BASE_URL}images/home_bg.jpg`} alt="Hero Background" className="w-full h-full object-cover opacity-50" />

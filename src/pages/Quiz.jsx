@@ -117,9 +117,20 @@ const optionIcons = {
   machineLearning: Brain
 };
 
+/**
+ * Quiz Component
+ * Handles the 10-question assessment to determine the user's ideal specialization.
+ * Features a built-in countdown timer, animated transitions (Framer Motion), 
+ * and synthesized Web Audio API sound effects.
+ */
 export default function Quiz() {
+  // State for tracking the current position in the quiz array
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  
+  // State mapping question IDs to the user's selected option type
   const [userAnswers, setUserAnswers] = useState({});
+  
+  // Countdown timer state (in seconds)
   const [timeLeft, setTimeLeft] = useState(180);
   const navigate = useNavigate();
 
@@ -145,11 +156,20 @@ export default function Quiz() {
     return () => clearInterval(timer);
   }, [userAnswers]);
 
+  /**
+   * Finalizes the quiz, tallies the score, saves to localStorage, 
+   * and routes the user to the Results view.
+   * @param {Object} answers - Dictionary of the user's selected answers
+   */
   const finishQuiz = (answers) => {
     const scores = { lowLevel: 0, fullStack: 0, arVr: 0, machineLearning: 0 };
+    
+    // Tally the frequencies of each selected specialization type
     Object.values(answers).forEach(type => {
       if (scores[type] !== undefined) scores[type]++;
     });
+    
+    // Persist scores for the Results page
     localStorage.setItem('quizScores', JSON.stringify(scores));
     navigate('/results');
   };

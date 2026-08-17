@@ -16,12 +16,20 @@ import './index.css';
 
 import Footer from './components/Footer';
 
+/**
+ * Main Application Component
+ * Configures global routing and layout structure.
+ * Uses HashRouter to ensure compatibility with GitHub Pages static hosting.
+ */
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-secondary/30 flex flex-col">
+        {/* Global Navigation Bar */}
         <Navbar />
-        <main className="flex-grow">
+        
+        {/* Main Content Routing Area */}
+        <div className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />

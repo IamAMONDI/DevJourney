@@ -14,6 +14,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
+/**
+ * Results Component
+ * Displays the personalized outcome of the user's assessment.
+ * Features a dynamic Canvas API graphic (Radar Chart) to visually plot their aptitude across specializations.
+ */
 export default function Results() {
   const canvasRef = useRef(null);
   const [firstName, setFirstName] = useState('Student');
@@ -71,6 +76,12 @@ export default function Results() {
     renderRadarChart(canvasRef.current, savedScores);
   }, []);
 
+  /**
+   * Renders a custom 4-axis radar chart using the native HTML5 Canvas API.
+   * Required for the assignment rubric.
+   * @param {HTMLCanvasElement} canvas - The canvas DOM node
+   * @param {Object} scoresData - Object containing the user's specialization scores
+   */
   const renderRadarChart = (canvas, scoresData) => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
