@@ -198,7 +198,10 @@ export default function Results() {
               <canvas ref={canvasRef} width={400} height={400} className="max-w-full" />
             </div>
             
-            <Card className="bg-[url('/images/simple-steps.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg">
+            <Card 
+              className="bg-cover bg-center bg-blend-overlay bg-opacity-90 bg-primary text-primary-foreground border-none shadow-lg"
+              style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/simple-steps.jpg')` }}
+            >
               <CardHeader>
                 <CardTitle className="text-3xl text-secondary">Top Recommendation:</CardTitle>
               </CardHeader>

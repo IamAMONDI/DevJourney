@@ -26,7 +26,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative bg-black text-white p-12 rounded-xl text-center shadow-lg overflow-hidden">
           <div className="absolute inset-0 z-0">
-             <img src="/images/home_bg.jpg" alt="Hero Background" className="w-full h-full object-cover opacity-50" />
+             <img src={`${import.meta.env.BASE_URL}images/home_bg.jpg`} alt="Hero Background" className="w-full h-full object-cover opacity-50" />
           </div>
           
           <motion.div 
@@ -152,7 +152,7 @@ export default function Home() {
               <Card className="border-none shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8 flex gap-6 items-start">
                   <div className="w-16 h-16 rounded-full bg-primary/20 overflow-hidden flex-shrink-0">
-                    <img src="/images/avatar_sarah.jpg" alt="Avatar Sarah" className="w-full h-full object-cover" />
+                    <img src={`${import.meta.env.BASE_URL}images/avatar_sarah.jpg`} alt="Avatar Sarah" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <p className="italic mb-4 text-muted-foreground">"The assessment accurately pinpointed my love for logic and optimization. I'm now a Systems Engineer working on core database engines."</p>
@@ -165,7 +165,7 @@ export default function Home() {
               <Card className="border-none shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8 flex gap-6 items-start">
                   <div className="w-16 h-16 rounded-full bg-primary/20 overflow-hidden flex-shrink-0">
-                    <img src="/images/avatar_david.jpg" alt="Avatar David" className="w-full h-full object-cover" />
+                    <img src={`${import.meta.env.BASE_URL}images/avatar_david.jpg`} alt="Avatar David" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <p className="italic mb-4 text-muted-foreground">"I was lost between frontend and backend. The full-stack roadmap gave me exactly the structured path I needed."</p>

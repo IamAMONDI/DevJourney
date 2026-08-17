@@ -15,7 +15,7 @@ export default function FullStack() {
       {/* Pathway Hero/Banner */}
       <Card className="relative bg-black text-white border-none shadow-lg overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src="/images/full_stack_bg.jpg" alt="Full Stack Background" className="w-full h-full object-cover opacity-50" />
+          <img src={`${import.meta.env.BASE_URL}images/full_stack_bg.jpg`} alt="Full Stack Background" className="w-full h-full object-cover opacity-50" />
         </div>
         <div className="relative z-10">
           <CardHeader>

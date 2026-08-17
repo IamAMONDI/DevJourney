@@ -15,7 +15,7 @@ export default function LowLevel() {
       {/* Pathway Hero/Banner */}
       <Card className="relative bg-black text-white border-none shadow-lg overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src="/images/low_level_bg.jpg" alt="Low Level Background" className="w-full h-full object-cover opacity-50" />
+          <img src={`${import.meta.env.BASE_URL}images/low_level_bg.jpg`} alt="Low Level Background" className="w-full h-full object-cover opacity-50" />
         </div>
         <div className="relative z-10">
           <CardHeader>
